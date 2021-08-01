@@ -1,0 +1,17 @@
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: -webkit-image-set(url(./canvas-cursor.png)2x,url(./canvas-cursor.png)1x)4 4, auto;
+}
+
+.drag-cursor{
+  cursor: -webkit-image-set(url(./drag-cursor.png)2x,url(./drag-cursor.png)1x)15 15, auto !important;
+}
