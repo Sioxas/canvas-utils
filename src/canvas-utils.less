@@ -36,6 +36,7 @@
   &-option{
     font-size: 12px;
     font-weight: 400;
+    font-family: Inter, sans-serif;
     display: flex;
     align-items: center;
     flex: 0 0 24px;
@@ -62,15 +63,21 @@
   }
 }
 
-.message-container{
+.canvas-utils-message{
+  &-container{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   background: #222;
   transition: transform .3s ease-out;
-  transition-property: transform,opacity;
-  transform: translate3d(0,3px,0);
-  opacity: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  transition-property: transform, opacity;
+  transform: translate3d(0, 3px, 0);
+  opacity: 0;
   user-select: none;
   border-radius: 5px;
   overflow: hidden;
@@ -79,11 +86,21 @@
   max-width: 800px;
   margin: 0 50px;
   pointer-events: none;
-  box-shadow: 0 5px 17px rgba(0,0,0,.2),0 2px 7px rgba(0,0,0,.15),inset 0 0 0 .5px #000,0 0 0 .5px rgba(0,0,0,0.1);
-  .message{
-    padding: 6px 16px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  box-shadow: 0 5px 17px rgba(0,0,0,.2),
+    0 2px 7px rgba(0,0,0,.15),
+    inset 0 0 0 .5px #000,
+    0 0 0 .5px rgba(0,0,0,0.1);
+  padding: 6px 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: Inter, sans-serif;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  &-active{
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
+

@@ -2,6 +2,7 @@ import { Tween, Easing, update } from '@tweenjs/tween.js';
 import { Dropdown, DropdownOption, DropdownSeparator } from './dropdown';
 
 import './canvas-utils.less'
+import { Message } from './message';
 
 export abstract class Stage {
   public ctx: StageContext2D;
@@ -18,7 +19,7 @@ export abstract class Stage {
 
   public canvas: HTMLCanvasElement;
 
-  constructor(root: HTMLElement) {
+  constructor(private root: HTMLElement) {
     this.canvas = document.createElement('canvas');
     this.canvas.classList.add('canvas-utils-stage');
     root.appendChild(this.canvas);
@@ -77,8 +78,13 @@ export abstract class Stage {
         new DropdownOption('Reposition', () => this.reposition()),
         new DropdownSeparator(),
         new DropdownOption('Copy as PNG', () => {
-          this.canvas.toBlob((blob) => {
-            blob && navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+          this.canvas.toBlob(async (blob) => {
+            if(blob){
+              await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+              this.root.append(Message('Image copied to clipboard.'));
+            } else {
+              this.root.append(Message('Fail to copy image!'));
+            }
           });
         }),
         new DropdownOption('Save as PNG', () => {
